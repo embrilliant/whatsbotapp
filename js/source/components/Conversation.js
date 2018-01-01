@@ -9,12 +9,16 @@ class Conversation extends React.Component {
 	    this.handleChatBarSubmit = this.handleChatBarSubmit.bind(this);
 
 	    const walls = [];
+	    const senders = [];
+
 	    for (let i = 0; i < this.props.contacts; i++ ) {
 	      walls.push([]);
+	      senders.push([]);
 	    }
 
 	    this.state = {
-	    	walls: walls
+	    	walls: walls,
+	    	senders: senders
 	    }
 
 	    this._timeout = null;
@@ -23,6 +27,7 @@ class Conversation extends React.Component {
 	handleChatBarSubmit(value) {
 		this.setState((prevState, props) => {
 				prevState.walls[props.index].push(value);
+				prevState.senders[props.index].push('user');
 		
 				return this.state;
 			}
@@ -41,6 +46,7 @@ class Conversation extends React.Component {
 		
 		this.setState((prevState) => {
 				prevState.walls[index].push(botMsg);
+				prevState.senders[index].push('bot');
 		
 				return this.state;
 			}
@@ -49,15 +55,19 @@ class Conversation extends React.Component {
 
 	render() {
 	    const index = this.props.index;
+	    let content = null;
+	    if (this.props.index !== '') {
+	      content = [
+						<ChatWall key={index} index={index} wall={this.state.walls[index]} senders={this.state.senders[index]}/>, 
+						<ChatBar key="chatBar" onChatBarSubmit={this.handleChatBarSubmit}/>
+					];
+	    } else {
+	      content = "Click a contact.";
+	    }
 		
 		return (
 			<section className="Conversation">
-				{this.props.index !== '' &&
-						[
-							<ChatWall key={index} index={index} wall={this.state.walls[index]} />, 
-							<ChatBar key="chatBar" onChatBarSubmit={this.handleChatBarSubmit}/>
-						]
-				}
+				{content}
       		</section>
 		)
 	}

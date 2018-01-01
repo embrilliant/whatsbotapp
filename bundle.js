@@ -122,10 +122,13 @@ var ChatWall = function (_React$Component) {
 		key: "render",
 		value: function render() {
 			var msgs = this.props.wall;
-			var msgLines = msgs.map(function (msg, i) {
+			var senders = this.props.senders;
+			var msgLines = msgs.map(function (msg, index) {
+				var msgSender = senders[index];
+
 				return _react2.default.createElement(
 					"p",
-					{ key: i },
+					{ className: msgSender, key: index },
 					_react2.default.createElement(
 						"span",
 						null,
@@ -140,8 +143,8 @@ var ChatWall = function (_React$Component) {
 				_react2.default.createElement(
 					"h1",
 					null,
-					"Number ",
-					this.props.index
+					"Contact ",
+					this.props.index + 1
 				),
 				_react2.default.createElement(
 					"div",
@@ -205,8 +208,8 @@ var Contact = function (_React$Component) {
 				_react2.default.createElement(
 					"p",
 					null,
-					"Number ",
-					this.props.indexNumber
+					"Contact ",
+					this.props.indexNumber + 1
 				)
 			);
 		}
@@ -337,7 +340,7 @@ var Container = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ className: 'main' },
+				{ className: 'Container' },
 				_react2.default.createElement(_ContactList2.default, { onContactClick: this.handleContactClick, contacts: this.state.contacts }),
 				_react2.default.createElement(_Conversation2.default, { index: this.state.index, contacts: this.state.contacts })
 			);
@@ -394,12 +397,16 @@ var Conversation = function (_React$Component) {
 		_this.handleChatBarSubmit = _this.handleChatBarSubmit.bind(_this);
 
 		var walls = [];
+		var senders = [];
+
 		for (var i = 0; i < _this.props.contacts; i++) {
 			walls.push([]);
+			senders.push([]);
 		}
 
 		_this.state = {
-			walls: walls
+			walls: walls,
+			senders: senders
 		};
 
 		_this._timeout = null;
@@ -413,6 +420,7 @@ var Conversation = function (_React$Component) {
 
 			this.setState(function (prevState, props) {
 				prevState.walls[props.index].push(value);
+				prevState.senders[props.index].push('user');
 
 				return _this2.state;
 			});
@@ -433,6 +441,7 @@ var Conversation = function (_React$Component) {
 
 			this.setState(function (prevState) {
 				prevState.walls[index].push(botMsg);
+				prevState.senders[index].push('bot');
 
 				return _this3.state;
 			});
@@ -441,11 +450,17 @@ var Conversation = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var index = this.props.index;
+			var content = null;
+			if (this.props.index !== '') {
+				content = [_react2.default.createElement(_ChatWall2.default, { key: index, index: index, wall: this.state.walls[index], senders: this.state.senders[index] }), _react2.default.createElement(_ChatBar2.default, { key: 'chatBar', onChatBarSubmit: this.handleChatBarSubmit })];
+			} else {
+				content = "Click a contact.";
+			}
 
 			return _react2.default.createElement(
 				'section',
 				{ className: 'Conversation' },
-				this.props.index !== '' && [_react2.default.createElement(_ChatWall2.default, { key: index, index: index, wall: this.state.walls[index] }), _react2.default.createElement(_ChatBar2.default, { key: 'chatBar', onChatBarSubmit: this.handleChatBarSubmit })]
+				content
 			);
 		}
 	}]);

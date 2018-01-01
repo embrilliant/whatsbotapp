@@ -13,7 +13,7 @@ class Contact extends React.Component {
 	render() {
 		return (
 			<div className="Contact" onClick={this.handleClick}>
-				<p>Number {this.props.indexNumber}</p>
+				<p>Contact {this.props.indexNumber + 1}</p>
 			</div>
 		)
 	}

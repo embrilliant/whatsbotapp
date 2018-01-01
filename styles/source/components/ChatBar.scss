@@ -1,7 +1,7 @@
 .ChatBar {
-	background-color: #bbbbbb;
+	background: linear-gradient(to bottom, #9d9d9d 0%, #444444 100%);
 	float: left;
-	height: 20%;
+	height: 10%;
 	width: 100%;
 
 	form {
@@ -12,22 +12,26 @@
 	input {
 		font-family: Arial;
 		font-size: 20px;
-		height: 35px;
 		margin-top: 10px;
 	}
 
 	input[type="text"] {
 		display: inline-block;
 		float: left;
-	    width: 88%;
+		height: 33px;
+		margin-left: 2px;
+	    width: 90%;
 	}
 
 	input[type="submit"] {
+		background: linear-gradient(to bottom, #b5bdc8 0%,#6d6d6d 100%);
 		display: inline-block;
 		border: none;
-		border-radius: 2px;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 1rem;
 		float: left;
-		height: 40px;
-	    width: 10%;
+		height: 37px;
+	    width: 8%;
 	}
 }

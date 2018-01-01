@@ -18,7 +18,7 @@ class Container extends React.Component {
 
 	render() {
 		return (
-			<div className="main">
+			<div className="Container">
 				<ContactList onContactClick={this.handleContactClick} contacts={this.state.contacts} />
 				<Conversation index={this.state.index} contacts={this.state.contacts} />
 			</div>

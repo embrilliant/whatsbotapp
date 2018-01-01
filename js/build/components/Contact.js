@@ -44,8 +44,8 @@ var Contact = function (_React$Component) {
 				_react2.default.createElement(
 					"p",
 					null,
-					"Number ",
-					this.props.indexNumber
+					"Contact ",
+					this.props.indexNumber + 1
 				)
 			);
 		}

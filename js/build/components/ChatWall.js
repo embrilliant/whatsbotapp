@@ -31,10 +31,13 @@ var ChatWall = function (_React$Component) {
 		key: "render",
 		value: function render() {
 			var msgs = this.props.wall;
-			var msgLines = msgs.map(function (msg, i) {
+			var senders = this.props.senders;
+			var msgLines = msgs.map(function (msg, index) {
+				var msgSender = senders[index];
+
 				return _react2.default.createElement(
 					"p",
-					{ key: i },
+					{ className: msgSender, key: index },
 					_react2.default.createElement(
 						"span",
 						null,
@@ -49,8 +52,8 @@ var ChatWall = function (_React$Component) {
 				_react2.default.createElement(
 					"h1",
 					null,
-					"Number ",
-					this.props.index
+					"Contact ",
+					this.props.index + 1
 				),
 				_react2.default.createElement(
 					"div",
