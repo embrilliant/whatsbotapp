@@ -33,6 +33,11 @@ var Contact = function (_React$Component) {
 	_createClass(Contact, [{
 		key: "handleClick",
 		value: function handleClick() {
+			// const wall = document.querySelector('.msgLines');
+			// if (wall) {
+			// 	wall.scrollTop = wall.scrollHeight;
+			// }
+
 			this.props.onClick(this.props.indexNumber);
 		}
 	}, {

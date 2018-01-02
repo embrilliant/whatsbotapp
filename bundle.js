@@ -121,11 +121,20 @@ var ChatWall = function (_React$Component) {
 	}
 
 	_createClass(ChatWall, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var wall = document.querySelector('.msgLines');
+			wall.scrollTop = wall.scrollHeight;
+
+			console.log('componentDidMount called');
+		}
+	}, {
 		key: 'componentDidUpdate',
 		value: function componentDidUpdate() {
 			var wall = document.querySelector('.msgLines');
-
 			wall.scrollTop = wall.scrollHeight;
+
+			console.log('componentDidUpdate called');
 		}
 	}, {
 		key: 'render',
@@ -211,6 +220,11 @@ var Contact = function (_React$Component) {
 	_createClass(Contact, [{
 		key: "handleClick",
 		value: function handleClick() {
+			// const wall = document.querySelector('.msgLines');
+			// if (wall) {
+			// 	wall.scrollTop = wall.scrollHeight;
+			// }
+
 			this.props.onClick(this.props.indexNumber);
 		}
 	}, {

@@ -7,6 +7,11 @@ class Contact extends React.Component {
 	}
 
 	handleClick() {
+		// const wall = document.querySelector('.msgLines');
+		// if (wall) {
+		// 	wall.scrollTop = wall.scrollHeight;
+		// }
+		
 		this.props.onClick(this.props.indexNumber);
 	}
 

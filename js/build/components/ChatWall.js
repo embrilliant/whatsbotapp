@@ -28,11 +28,20 @@ var ChatWall = function (_React$Component) {
 	}
 
 	_createClass(ChatWall, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var wall = document.querySelector('.msgLines');
+			wall.scrollTop = wall.scrollHeight;
+
+			console.log('componentDidMount called');
+		}
+	}, {
 		key: 'componentDidUpdate',
 		value: function componentDidUpdate() {
 			var wall = document.querySelector('.msgLines');
-
 			wall.scrollTop = wall.scrollHeight;
+
+			console.log('componentDidUpdate called');
 		}
 	}, {
 		key: 'render',
