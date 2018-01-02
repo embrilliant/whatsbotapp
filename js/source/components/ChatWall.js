@@ -1,6 +1,13 @@
 import React from 'react';
 
 class ChatWall extends React.Component {
+
+	componentDidUpdate() {
+		const wall = document.querySelector('.msgLines');
+
+		wall.scrollTop = wall.scrollHeight;
+	}
+
 	render() {
 		const msgs = this.props.wall;
 		const senders = this.props.senders;
@@ -18,7 +25,13 @@ class ChatWall extends React.Component {
 		return (
 			<div id={this.props.index} className="ChatWall">
 				<h1>Contact {this.props.index + 1}</h1>
-				<div className="msgLines">{msgLines}</div>
+				<div className="msgLines">
+					<div className="inner-block">
+					</div>
+					<div className="text">
+						{msgLines}
+					</div>
+				</div>
       		</div>
 		)
 	}

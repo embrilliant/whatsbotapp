@@ -14,8 +14,10 @@ class ChatBar extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.props.onChatBarSubmit(this.state.value);
-		this.setState({value: ''});
+		if (this.state.value !== '') {
+			this.props.onChatBarSubmit(this.state.value);
+			this.setState({value: ''});
+		}
 	}
 
 	handleChange(e) {

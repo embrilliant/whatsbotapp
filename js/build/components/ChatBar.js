@@ -39,8 +39,10 @@ var ChatBar = function (_React$Component) {
 		key: 'handleSubmit',
 		value: function handleSubmit(e) {
 			e.preventDefault();
-			this.props.onChatBarSubmit(this.state.value);
-			this.setState({ value: '' });
+			if (this.state.value !== '') {
+				this.props.onChatBarSubmit(this.state.value);
+				this.setState({ value: '' });
+			}
 		}
 	}, {
 		key: 'handleChange',

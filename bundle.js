@@ -58,8 +58,10 @@ var ChatBar = function (_React$Component) {
 		key: 'handleSubmit',
 		value: function handleSubmit(e) {
 			e.preventDefault();
-			this.props.onChatBarSubmit(this.state.value);
-			this.setState({ value: '' });
+			if (this.state.value !== '') {
+				this.props.onChatBarSubmit(this.state.value);
+				this.setState({ value: '' });
+			}
 		}
 	}, {
 		key: 'handleChange',
@@ -89,7 +91,7 @@ var ChatBar = function (_React$Component) {
 
 exports.default = ChatBar;
 },{"react":34}],3:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -97,7 +99,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -119,7 +121,14 @@ var ChatWall = function (_React$Component) {
 	}
 
 	_createClass(ChatWall, [{
-		key: "render",
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			var wall = document.querySelector('.msgLines');
+
+			wall.scrollTop = wall.scrollHeight;
+		}
+	}, {
+		key: 'render',
 		value: function render() {
 			var msgs = this.props.wall;
 			var senders = this.props.senders;
@@ -127,10 +136,10 @@ var ChatWall = function (_React$Component) {
 				var msgSender = senders[index];
 
 				return _react2.default.createElement(
-					"p",
+					'p',
 					{ className: msgSender, key: index },
 					_react2.default.createElement(
-						"span",
+						'span',
 						null,
 						msg
 					)
@@ -138,18 +147,23 @@ var ChatWall = function (_React$Component) {
 			});
 
 			return _react2.default.createElement(
-				"div",
-				{ id: this.props.index, className: "ChatWall" },
+				'div',
+				{ id: this.props.index, className: 'ChatWall' },
 				_react2.default.createElement(
-					"h1",
+					'h1',
 					null,
-					"Contact ",
+					'Contact ',
 					this.props.index + 1
 				),
 				_react2.default.createElement(
-					"div",
-					{ className: "msgLines" },
-					msgLines
+					'div',
+					{ className: 'msgLines' },
+					_react2.default.createElement('div', { className: 'inner-block' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'text' },
+						msgLines
+					)
 				)
 			);
 		}
