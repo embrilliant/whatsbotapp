@@ -5,15 +5,11 @@ class ChatWall extends React.Component {
 	componentDidMount() {
 		const wall = document.querySelector('.msgLines');
 		wall.scrollTop = wall.scrollHeight;
-
-		console.log('componentDidMount called');
 	}
 
 	componentDidUpdate() {
 		const wall = document.querySelector('.msgLines');
 		wall.scrollTop = wall.scrollHeight;
-
-		console.log('componentDidUpdate called');
 	}
 
 	render() {
