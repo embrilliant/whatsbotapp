@@ -34,7 +34,10 @@
   position: relative;
   width: 100%; }
   .ChatWall h1 {
-    color: #777; }
+    color: #777;
+    height: 5%;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0; }
 
 .inner-block {
   display: inline-block;
@@ -46,7 +49,7 @@
   height: auto; }
 
 .msgLines {
-  height: 90%;
+  height: 95%;
   overflow-y: auto;
   position: relative;
   text-align: right;

@@ -44,6 +44,9 @@
 
 	h1 {
 		color: #777;
+		height: 5%;
+    	-webkit-margin-before: 0;
+    	-webkit-margin-after: 0;
 	}
 }
 
@@ -59,7 +62,7 @@
 }
 
 .msgLines {
-	height: 90%;
+	height: 95%;
 	overflow-y: auto;
 	position: relative;
 	text-align: right;
