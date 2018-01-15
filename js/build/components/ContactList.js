@@ -49,7 +49,7 @@ var ContactList = function (_React$Component) {
 
 			return _react2.default.createElement(
 				'section',
-				{ className: 'ContactList' },
+				{ className: 'contact-list' },
 				contacts
 			);
 		}

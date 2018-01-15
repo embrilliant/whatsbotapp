@@ -13,12 +13,16 @@ var cases = {
 			"your name": "You can call me whatever you want.",
 			"what i said": "I understand.",
 			"why": "You will find out why.",
-			"like": "I like most things.",
+			"you like": "I like most things.",
 			" hi": "Hello.",
 			"hello": "Hi.",
 			"marry": ":)",
+			"love you": "I know.",
+			"you want": "What are you looking for?",
+			"m looking for": "This is not the droid you're looking for.",
 			"bye": "Bye.",
 			"cool": "Cool stuff.",
+			"cute": "You are cute, too",
 			"awesome": "Awesome.",
 			"yourself": "You will find out more about me by yourself.",
 			"emily": "I am made by Emily.",
@@ -26,7 +30,7 @@ var cases = {
 			"idiot": "Please be nice.",
 			"problem": "Problems always exist.",
 			"sleepy": "Maybe it's time for bed?",
-			randRes: ["Everything will be ok.", "Ok, I don't know what to say.", "Alright.", "Ok.", "Tell me about it.", "Oh?", "Fair enough."]
+			randRes: ["Ok, I don't know what to say.", "Alright.", "Ok.", "Tell me about it.", "Oh?", "Fair enough.", "Everything will be ok." , "I’ve got a bad feeling about this."]
 		};
 
 class Robot {

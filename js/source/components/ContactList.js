@@ -18,7 +18,7 @@ class ContactList extends React.Component {
 	    }
 		
 		return (
-			<section className="ContactList">
+			<section className="contact-list">
 				{contacts}
       		</section>
 		)

@@ -27,7 +27,7 @@ class ChatWall extends React.Component {
 		)
 
 		return (
-			<div id={this.props.index} className="ChatWall">
+			<div id={this.props.index} className="chat-wall">
 				<h1>Contact {this.props.index + 1}</h1>
 				<div className="msgLines">
 					<div className="inner-block">

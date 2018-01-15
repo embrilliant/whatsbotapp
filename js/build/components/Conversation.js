@@ -103,7 +103,7 @@ var Conversation = function (_React$Component) {
 
 			return _react2.default.createElement(
 				'section',
-				{ className: 'Conversation' },
+				{ className: 'conversation' },
 				content
 			);
 		}

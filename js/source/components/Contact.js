@@ -7,17 +7,12 @@ class Contact extends React.Component {
 	}
 
 	handleClick() {
-		// const wall = document.querySelector('.msgLines');
-		// if (wall) {
-		// 	wall.scrollTop = wall.scrollHeight;
-		// }
-		
 		this.props.onClick(this.props.indexNumber);
 	}
 
 	render() {
 		return (
-			<div className="Contact" onClick={this.handleClick}>
+			<div className="contact" onClick={this.handleClick}>
 				<p>Contact {this.props.indexNumber + 1}</p>
 			</div>
 		)

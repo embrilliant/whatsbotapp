@@ -54,7 +54,7 @@ var ChatBar = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ className: 'ChatBar' },
+				{ className: 'chat-bar' },
 				_react2.default.createElement(
 					'form',
 					{ onSubmit: this.handleSubmit },

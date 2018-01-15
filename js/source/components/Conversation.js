@@ -66,7 +66,7 @@ class Conversation extends React.Component {
 	    }
 		
 		return (
-			<section className="Conversation">
+			<section className="conversation">
 				{content}
       		</section>
 		)

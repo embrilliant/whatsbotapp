@@ -52,7 +52,7 @@ var Container = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ className: 'Container' },
+				{ className: 'container' },
 				_react2.default.createElement(_ContactList2.default, { onContactClick: this.handleContactClick, contacts: this.state.contacts }),
 				_react2.default.createElement(_Conversation2.default, { index: this.state.index, contacts: this.state.contacts })
 			);

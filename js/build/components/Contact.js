@@ -33,11 +33,6 @@ var Contact = function (_React$Component) {
 	_createClass(Contact, [{
 		key: "handleClick",
 		value: function handleClick() {
-			// const wall = document.querySelector('.msgLines');
-			// if (wall) {
-			// 	wall.scrollTop = wall.scrollHeight;
-			// }
-
 			this.props.onClick(this.props.indexNumber);
 		}
 	}, {
@@ -45,7 +40,7 @@ var Contact = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				"div",
-				{ className: "Contact", onClick: this.handleClick },
+				{ className: "contact", onClick: this.handleClick },
 				_react2.default.createElement(
 					"p",
 					null,

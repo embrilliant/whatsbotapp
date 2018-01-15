@@ -60,7 +60,7 @@ var ChatWall = function (_React$Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ id: this.props.index, className: 'ChatWall' },
+				{ id: this.props.index, className: 'chat-wall' },
 				_react2.default.createElement(
 					'h1',
 					null,
