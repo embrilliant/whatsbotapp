@@ -30,7 +30,7 @@ var cases = {
 			"idiot": "Please be nice.",
 			"problem": "Problems always exist.",
 			"sleepy": "Maybe it's time for bed?",
-			randRes: ["Ok, I don't know what to say.", "Alright.", "Ok.", "Tell me about it.", "Oh?", "Fair enough.", "Everything will be ok." , "I’ve got a bad feeling about this."]
+			randRes: ["Ok, I don't know what to say.", "Alright.", "Ok.", "Tell me about it.", "Oh?", "Fair enough.", "I’ve got a bad feeling about this.", "I don't know.", "Right."]
 		};
 
 class Robot {

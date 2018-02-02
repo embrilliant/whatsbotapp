@@ -58,7 +58,7 @@ var ChatBar = function (_React$Component) {
 				_react2.default.createElement(
 					'form',
 					{ onSubmit: this.handleSubmit },
-					_react2.default.createElement('input', { type: 'text', name: 'text', value: this.state.value, onChange: this.handleChange }),
+					_react2.default.createElement('input', { type: 'text', name: 'text', autoComplete: 'off', value: this.state.value, onChange: this.handleChange }),
 					_react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'SEND' })
 				)
 			);

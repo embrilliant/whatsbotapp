@@ -77,7 +77,7 @@ var ChatBar = function (_React$Component) {
 				_react2.default.createElement(
 					'form',
 					{ onSubmit: this.handleSubmit },
-					_react2.default.createElement('input', { type: 'text', name: 'text', value: this.state.value, onChange: this.handleChange }),
+					_react2.default.createElement('input', { type: 'text', name: 'text', autoComplete: 'off', value: this.state.value, onChange: this.handleChange }),
 					_react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'SEND' })
 				)
 			);
@@ -417,15 +417,18 @@ var Conversation = function (_React$Component) {
 
 		var walls = [];
 		var senders = [];
+		var memories = [];
 
 		for (var i = 0; i < _this.props.contacts; i++) {
 			walls.push([]);
 			senders.push([]);
+			memories.push([]);
 		}
 
 		_this.state = {
 			walls: walls,
-			senders: senders
+			senders: senders,
+			memories: memories
 		};
 
 		_this._timeout = null;
@@ -440,6 +443,7 @@ var Conversation = function (_React$Component) {
 			this.setState(function (prevState, props) {
 				prevState.walls[props.index].push(value);
 				prevState.senders[props.index].push('user');
+				prevState.memories[props.index].push(value);
 
 				return _this2.state;
 			});
@@ -456,7 +460,15 @@ var Conversation = function (_React$Component) {
 			var index = this.props.index;
 			var msgLines = this.state.walls[index];
 			var bot = new _Robot2.default();
+			var hasMsgsInMemory = this.state.memories[index].length > 0;
+			var answerToChange = "Right.";
+
 			var botMsg = bot.getResponse(msgLines[msgLines.length - 1]);
+
+			if (botMsg === answerToChange && hasMsgsInMemory) {
+				var ran = Math.floor(Math.random() * this.state.memories[index].length);
+				botMsg = this.state.memories[index][ran].replace('?', ' then ?');
+			}
 
 			this.setState(function (prevState) {
 				prevState.walls[index].push(botMsg);
@@ -473,7 +485,11 @@ var Conversation = function (_React$Component) {
 			if (this.props.index !== '') {
 				content = [_react2.default.createElement(_ChatWall2.default, { key: index, index: index, wall: this.state.walls[index], senders: this.state.senders[index] }), _react2.default.createElement(_ChatBar2.default, { key: 'chatBar', onChatBarSubmit: this.handleChatBarSubmit })];
 			} else {
-				content = "Click a contact.";
+				content = _react2.default.createElement(
+					'h1',
+					null,
+					'Click a contact.'
+				);
 			}
 
 			return _react2.default.createElement(
@@ -533,7 +549,7 @@ var cases = {
 	"idiot": "Please be nice.",
 	"problem": "Problems always exist.",
 	"sleepy": "Maybe it's time for bed?",
-	randRes: ["Ok, I don't know what to say.", "Alright.", "Ok.", "Tell me about it.", "Oh?", "Fair enough.", "Everything will be ok.", "I’ve got a bad feeling about this."]
+	randRes: ["Ok, I don't know what to say.", "Alright.", "Ok.", "Tell me about it.", "Oh?", "Fair enough.", "I’ve got a bad feeling about this.", "I don't know.", "Right."]
 };
 
 var Robot = function () {

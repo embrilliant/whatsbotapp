@@ -42,15 +42,18 @@ var Conversation = function (_React$Component) {
 
 		var walls = [];
 		var senders = [];
+		var memories = [];
 
 		for (var i = 0; i < _this.props.contacts; i++) {
 			walls.push([]);
 			senders.push([]);
+			memories.push([]);
 		}
 
 		_this.state = {
 			walls: walls,
-			senders: senders
+			senders: senders,
+			memories: memories
 		};
 
 		_this._timeout = null;
@@ -65,6 +68,7 @@ var Conversation = function (_React$Component) {
 			this.setState(function (prevState, props) {
 				prevState.walls[props.index].push(value);
 				prevState.senders[props.index].push('user');
+				prevState.memories[props.index].push(value);
 
 				return _this2.state;
 			});
@@ -81,7 +85,15 @@ var Conversation = function (_React$Component) {
 			var index = this.props.index;
 			var msgLines = this.state.walls[index];
 			var bot = new _Robot2.default();
+			var hasMsgsInMemory = this.state.memories[index].length > 0;
+			var answerToChange = "Right.";
+
 			var botMsg = bot.getResponse(msgLines[msgLines.length - 1]);
+
+			if (botMsg === answerToChange && hasMsgsInMemory) {
+				var ran = Math.floor(Math.random() * this.state.memories[index].length);
+				botMsg = this.state.memories[index][ran].replace('?', ' then ?');
+			}
 
 			this.setState(function (prevState) {
 				prevState.walls[index].push(botMsg);
@@ -98,7 +110,11 @@ var Conversation = function (_React$Component) {
 			if (this.props.index !== '') {
 				content = [_react2.default.createElement(_ChatWall2.default, { key: index, index: index, wall: this.state.walls[index], senders: this.state.senders[index] }), _react2.default.createElement(_ChatBar2.default, { key: 'chatBar', onChatBarSubmit: this.handleChatBarSubmit })];
 			} else {
-				content = "Click a contact.";
+				content = _react2.default.createElement(
+					'h1',
+					null,
+					'Click a contact.'
+				);
 			}
 
 			return _react2.default.createElement(

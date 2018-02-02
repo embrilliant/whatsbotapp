@@ -10,15 +10,18 @@ class Conversation extends React.Component {
 
 	    const walls = [];
 	    const senders = [];
+	    const memories = [];
 
 	    for (let i = 0; i < this.props.contacts; i++ ) {
 	      walls.push([]);
 	      senders.push([]);
+	      memories.push([]);
 	    }
 
 	    this.state = {
-	    	walls: walls,
-	    	senders: senders
+	    	walls,
+	    	senders,
+	    	memories
 	    }
 
 	    this._timeout = null;
@@ -28,6 +31,7 @@ class Conversation extends React.Component {
 		this.setState((prevState, props) => {
 				prevState.walls[props.index].push(value);
 				prevState.senders[props.index].push('user');
+				prevState.memories[props.index].push(value);
 		
 				return this.state;
 			}
@@ -39,10 +43,18 @@ class Conversation extends React.Component {
 	}
 
 	addBotMsg() {
-		let index = this.props.index
-		let msgLines = this.state.walls[index];
-		let bot = new Robot();
+		const index = this.props.index
+		const msgLines = this.state.walls[index];
+		const bot = new Robot();
+		const hasMsgsInMemory = this.state.memories[index].length > 0;
+		const answerToChange = "Right.";
+
 		let botMsg = bot.getResponse(msgLines[msgLines.length - 1]);
+
+		if (botMsg === answerToChange && hasMsgsInMemory) {
+			let ran = Math.floor((Math.random() * (this.state.memories[index].length)));
+			botMsg = this.state.memories[index][ran].replace('?', ' then ?');
+		}
 		
 		this.setState((prevState) => {
 				prevState.walls[index].push(botMsg);
@@ -62,7 +74,7 @@ class Conversation extends React.Component {
 						<ChatBar key="chatBar" onChatBarSubmit={this.handleChatBarSubmit}/>
 					];
 	    } else {
-	      content = "Click a contact.";
+	      content = <h1>Click a contact.</h1>;
 	    }
 		
 		return (

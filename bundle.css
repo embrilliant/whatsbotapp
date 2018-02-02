@@ -97,10 +97,13 @@
   width: 100%; }
 
 .conversation {
-  background-color: #fff;
+  background-color: #e8e8e8;
   display: inline-block;
   height: 100%;
   width: 75%; }
+  .conversation > h1 {
+    color: #777;
+    margin: 20% 0 0 30%; }
 
 html, body {
   height: 100%;
