@@ -58,6 +58,16 @@ var ChatWall = function (_React$Component) {
 				);
 			});
 
+			axios({
+				method: 'post',
+				url: 'log/log.php',
+				data: {
+					// 'user': msgSender,
+					// 'text': msg
+					'test': msgLines
+				}
+			});
+
 			return _react2.default.createElement(
 				'div',
 				{ id: this.props.index, className: 'chat-wall' },

@@ -18,6 +18,15 @@ class ChatWall extends React.Component {
 		const msgLines = msgs.map((msg, index) => {
 				let msgSender = senders[index];
 
+				axios({
+					method: 'post',
+		 			url: 'log/log.php',
+		 			data: {
+		    			'user': msgSender,
+		    			'text': msg
+					}
+				});
+				
 				return (
 					<p className={msgSender} key={index}>
 						<span>{msg}</span>
@@ -25,6 +34,8 @@ class ChatWall extends React.Component {
 				)
 			}
 		)
+
+		
 
 		return (
 			<div id={this.props.index} className="chat-wall">

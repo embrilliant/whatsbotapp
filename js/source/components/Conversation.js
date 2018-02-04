@@ -2,6 +2,7 @@ import React from 'react';
 import ChatWall from './ChatWall';
 import ChatBar from './ChatBar';
 import Robot from './Robot';
+// import axios from 'axios';
 
 class Conversation extends React.Component {
 	constructor(props) {
