@@ -140,6 +140,15 @@ var ChatWall = function (_React$Component) {
 			var msgLines = msgs.map(function (msg, index) {
 				var msgSender = senders[index];
 
+				axios({
+					method: 'post',
+					url: 'log/log.php',
+					data: {
+						'user': msgSender,
+						'text': msg
+					}
+				});
+
 				return _react2.default.createElement(
 					'p',
 					{ className: msgSender, key: index },
@@ -149,16 +158,6 @@ var ChatWall = function (_React$Component) {
 						msg
 					)
 				);
-			});
-
-			axios({
-				method: 'post',
-				url: 'log/log.php',
-				data: {
-					// 'user': msgSender,
-					// 'text': msg
-					'test': msgLines
-				}
 			});
 
 			return _react2.default.createElement(
