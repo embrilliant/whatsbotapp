@@ -22,7 +22,7 @@ var cases = {
 			"m looking for": "This is not the droid you're looking for.",
 			"bye": "Bye.",
 			"cool": "Cool stuff.",
-			"cute": "You are cute, too",
+			"cute": "You are cute, too.",
 			"awesome": "Awesome.",
 			"yourself": "You will find out more about me by yourself.",
 			"emily": "I am made by Emily.",
