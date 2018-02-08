@@ -137,15 +137,15 @@ var ChatWall = function (_React$Component) {
 		value: function render() {
 			var msgs = this.props.wall;
 			var senders = this.props.senders;
-			var msgLines = msgs.map(function (msg, index) {
-				var msgSender = senders[index];
+			var msgLines = msgs.map(function (message, index) {
+				var sender = senders[index];
 
 				axios({
 					method: 'post',
 					url: 'log/log.php',
 					data: {
-						'user': msgSender,
-						'text': msg
+						sender: sender,
+						message: message
 					}
 				});
 
@@ -552,7 +552,7 @@ var cases = {
 	"m looking for": "This is not the droid you're looking for.",
 	"bye": "Bye.",
 	"cool": "Cool stuff.",
-	"cute": "You are cute, too",
+	"cute": "You are cute, too.",
 	"awesome": "Awesome.",
 	"yourself": "You will find out more about me by yourself.",
 	"emily": "I am made by Emily.",

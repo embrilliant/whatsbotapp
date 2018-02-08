@@ -15,15 +15,15 @@ class ChatWall extends React.Component {
 	render() {
 		const msgs = this.props.wall;
 		const senders = this.props.senders;
-		const msgLines = msgs.map((msg, index) => {
-				let msgSender = senders[index];
+		const msgLines = msgs.map((message, index) => {
+				let sender = senders[index];
 
 				axios({
 					method: 'post',
 		 			url: 'log/log.php',
 		 			data: {
-		    			'user': msgSender,
-		    			'text': msg
+		    			sender,
+		    			message
 					}
 				});
 				
