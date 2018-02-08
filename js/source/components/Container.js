@@ -7,20 +7,20 @@ class Container extends React.Component {
 	    super(props);
 	    this.handleContactClick = this.handleContactClick.bind(this);
 	    this.state = {
-	    	contacts: 5,
+	    	numOfContacts: 5,
 	    	index: ''
 	    }
 	}
 
 	handleContactClick(index) {
-		this.setState({index: index});
+		this.setState({index});
 	}
 
 	render() {
 		return (
 			<div className="container">
-				<ContactList onContactClick={this.handleContactClick} contacts={this.state.contacts} />
-				<Conversation index={this.state.index} contacts={this.state.contacts} />
+				<ContactList onContactClick={this.handleContactClick} contacts={this.state.numOfContacts} />
+				<Conversation index={this.state.index} contacts={this.state.numOfContacts} />
 			</div>
 		)
 	}

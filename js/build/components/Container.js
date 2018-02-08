@@ -36,7 +36,7 @@ var Container = function (_React$Component) {
 
 		_this.handleContactClick = _this.handleContactClick.bind(_this);
 		_this.state = {
-			contacts: 5,
+			numOfContacts: 5,
 			index: ''
 		};
 		return _this;
@@ -53,8 +53,8 @@ var Container = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'container' },
-				_react2.default.createElement(_ContactList2.default, { onContactClick: this.handleContactClick, contacts: this.state.contacts }),
-				_react2.default.createElement(_Conversation2.default, { index: this.state.index, contacts: this.state.contacts })
+				_react2.default.createElement(_ContactList2.default, { onContactClick: this.handleContactClick, contacts: this.state.numOfContacts }),
+				_react2.default.createElement(_Conversation2.default, { index: this.state.index, contacts: this.state.numOfContacts })
 			);
 		}
 	}]);
