@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class ChatWall extends React.Component {
 
@@ -10,32 +11,30 @@ class ChatWall extends React.Component {
 	componentDidUpdate() {
 		const wall = document.querySelector('.msgLines');
 		wall.scrollTop = wall.scrollHeight;
+
+		axios({
+			method: 'post',
+ 			url: 'log/log.php',
+ 			data: {
+    			sender: this.props.senders[this.props.senders.length - 1],
+    			message: this.props.wall[this.props.wall.length - 1]
+			}
+		});
 	}
 
 	render() {
-		const msgs = this.props.wall;
+		const messages = this.props.wall;
 		const senders = this.props.senders;
-		const msgLines = msgs.map((message, index) => {
+		const msgLines = messages.map((message, index) => {
 				let sender = senders[index];
-
-				axios({
-					method: 'post',
-		 			url: 'log/log.php',
-		 			data: {
-		    			sender,
-		    			message
-					}
-				});
 				
 				return (
-					<p className={msgSender} key={index}>
-						<span>{msg}</span>
+					<p className={sender} key={index}>
+						<span>{message}</span>
 					</p>
 				)
 			}
 		)
-
-		
 
 		return (
 			<div id={this.props.index} className="chat-wall">

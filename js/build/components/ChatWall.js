@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38,31 +42,31 @@ var ChatWall = function (_React$Component) {
 		value: function componentDidUpdate() {
 			var wall = document.querySelector('.msgLines');
 			wall.scrollTop = wall.scrollHeight;
+
+			(0, _axios2.default)({
+				method: 'post',
+				url: 'log/log.php',
+				data: {
+					sender: this.props.senders[this.props.senders.length - 1],
+					message: this.props.wall[this.props.wall.length - 1]
+				}
+			});
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var msgs = this.props.wall;
+			var messages = this.props.wall;
 			var senders = this.props.senders;
-			var msgLines = msgs.map(function (message, index) {
+			var msgLines = messages.map(function (message, index) {
 				var sender = senders[index];
-
-				axios({
-					method: 'post',
-					url: 'log/log.php',
-					data: {
-						sender: sender,
-						message: message
-					}
-				});
 
 				return _react2.default.createElement(
 					'p',
-					{ className: msgSender, key: index },
+					{ className: sender, key: index },
 					_react2.default.createElement(
 						'span',
 						null,
-						msg
+						message
 					)
 				);
 			});
