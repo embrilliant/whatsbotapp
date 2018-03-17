@@ -84,16 +84,9 @@ var Conversation = function (_React$Component) {
 
 			var index = this.props.index;
 			var msgLines = this.state.walls[index];
-			var bot = new _Robot2.default();
-			var hasMsgsInMemory = this.state.memories[index].length > 0;
-			var answerToChange = "Right.";
+			var userMsg = msgLines[msgLines.length - 1];
 
-			var botMsg = bot.getResponse(msgLines[msgLines.length - 1]);
-
-			if (botMsg === answerToChange && hasMsgsInMemory) {
-				var ran = Math.floor(Math.random() * this.state.memories[index].length);
-				botMsg = this.state.memories[index][ran].replace('?', ' then ?');
-			}
+			var botMsg = this.getBotMsg(userMsg, 1);
 
 			this.setState(function (prevState) {
 				prevState.walls[index].push(botMsg);
@@ -103,10 +96,36 @@ var Conversation = function (_React$Component) {
 			});
 		}
 	}, {
+		key: 'getBotMsg',
+		value: function getBotMsg(userMsg, time) {
+			var index = this.props.index;
+			var bot = new _Robot2.default();
+			var hasMsgsInMemory = this.state.memories[index].length > 0;
+			var answerToChange = "Right.";
+			var wall = this.state.walls[index];
+			var repUserMsg = "gibberish";
+
+			var botMsg = bot.getResponse(userMsg);
+
+			if (botMsg === answerToChange && hasMsgsInMemory) {
+				var ran = Math.floor(Math.random() * this.state.memories[index].length);
+				botMsg = this.state.memories[index][ran].replace('?', ' then?');
+			}
+
+			if (time === 3) {
+				return this.getBotMsg(repUserMsg, 1);
+			} else {
+				var isMsgRecentlyRepeated = botMsg === wall[wall.length - 2] || botMsg === wall[wall.length - 4];
+
+				return isMsgRecentlyRepeated ? this.getBotMsg(userMsg, time + 1) : botMsg;
+			}
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var index = this.props.index;
 			var content = null;
+
 			if (this.props.index !== '') {
 				content = [_react2.default.createElement(_ChatWall2.default, { key: index, index: index, wall: this.state.walls[index], senders: this.state.senders[index] }), _react2.default.createElement(_ChatBar2.default, { key: 'chatBar', onChatBarSubmit: this.handleChatBarSubmit })];
 			} else {

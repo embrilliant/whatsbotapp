@@ -13,7 +13,8 @@ class Contact extends React.Component {
 	render() {
 		return (
 			<div className="contact" onClick={this.handleClick}>
-				<p>Contact {this.props.indexNumber + 1}</p>
+				<p className="name">Contact {this.props.indexNumber + 1}</p>
+				<img className="photo" src="images/avatar.png" />
 			</div>
 		)
 	}

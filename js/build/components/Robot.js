@@ -29,7 +29,6 @@ var cases = {
 	"marry": ":)",
 	"love you": "I know.",
 	"you want": "What are you looking for?",
-	"m looking for": "This is not the droid you're looking for.",
 	"bye": "Bye.",
 	"cool": "Cool stuff.",
 	"cute": "You are cute, too.",
@@ -40,7 +39,8 @@ var cases = {
 	"idiot": "Please be nice.",
 	"problem": "Problems always exist.",
 	"sleepy": "Maybe it's time for bed?",
-	randRes: ["Ok, I don't know what to say.", "Alright.", "Ok.", "Tell me about it.", "Oh?", "Fair enough.", "I’ve got a bad feeling about this.", "I don't know.", "Right."]
+	"about what": "Whatever you want.",
+	randRes: ["Ok, I don't know what to say.", "Ok.", "Tell me about it.", "Oh?", "Alright.", "Everything will be ok.", "I don't know.", "Right."]
 };
 
 var Robot = function () {
@@ -58,8 +58,6 @@ var Robot = function () {
 		value: function respond(textString) {
 			var response = '';
 			var stringLowerCased = textString.toLowerCase();
-
-			this.initialHi = this.initialHi.bind(this);
 
 			if (this.initialHi(stringLowerCased)) {
 				response = cases[" hi"];

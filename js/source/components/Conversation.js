@@ -45,29 +45,47 @@ class Conversation extends React.Component {
 	addBotMsg() {
 		const index = this.props.index
 		const msgLines = this.state.walls[index];
-		const bot = new Robot();
-		const hasMsgsInMemory = this.state.memories[index].length > 0;
-		const answerToChange = "Right.";
+		const userMsg = msgLines[msgLines.length - 1];
 
-		let botMsg = bot.getResponse(msgLines[msgLines.length - 1]);
-
-		if (botMsg === answerToChange && hasMsgsInMemory) {
-			let ran = Math.floor((Math.random() * (this.state.memories[index].length)));
-			botMsg = this.state.memories[index][ran].replace('?', ' then ?');
-		}
+		const botMsg = this.getBotMsg(userMsg, 1);
 		
 		this.setState((prevState) => {
 				prevState.walls[index].push(botMsg);
 				prevState.senders[index].push('bot');
-		
+
 				return this.state;
 			}
-		)
+		);
+  	}
+
+  	getBotMsg(userMsg, time) {
+  		const index = this.props.index;
+  		const bot = new Robot();
+		const hasMsgsInMemory = this.state.memories[index].length > 0;
+		const answerToChange = "Right.";
+		const wall = this.state.walls[index];
+		const repUserMsg = "gibberish";
+
+		let botMsg = bot.getResponse(userMsg);
+
+		if (botMsg === answerToChange && hasMsgsInMemory) {
+			let ran = Math.floor((Math.random() * (this.state.memories[index].length)));
+			botMsg = this.state.memories[index][ran].replace('?', ' then?');
+		}
+
+		if (time === 3) {
+			return this.getBotMsg(repUserMsg, 1);
+		} else {
+			let isMsgRecentlyRepeated = (botMsg === wall[wall.length - 2] || botMsg === wall[wall.length - 4]);
+
+			return isMsgRecentlyRepeated ? this.getBotMsg(userMsg, time + 1) : botMsg;
+		}
   	}
 
 	render() {
 	    const index = this.props.index;
 	    let content = null;
+
 	    if (this.props.index !== '') {
 	      content = [
 						<ChatWall key={index} index={index} wall={this.state.walls[index]} senders={this.state.senders[index]}/>, 

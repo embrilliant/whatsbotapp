@@ -43,10 +43,11 @@ var Contact = function (_React$Component) {
 				{ className: "contact", onClick: this.handleClick },
 				_react2.default.createElement(
 					"p",
-					null,
+					{ className: "name" },
 					"Contact ",
 					this.props.indexNumber + 1
-				)
+				),
+				_react2.default.createElement("img", { className: "photo", src: "images/avatar.png" })
 			);
 		}
 	}]);

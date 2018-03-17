@@ -2,6 +2,8 @@
 	background: linear-gradient(135deg, #b1b1b1 0%, #191919 100%);
 	display: inline-block;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
 	float: left;
 	padding: 5px 0;
 	width: 25%;
