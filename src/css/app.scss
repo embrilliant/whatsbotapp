@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash');
+
+@import "./components/ChatBar";
+
+@import "./components/ChatWall";
+
+@import "./components/Contact";
+
+@import "./components/ContactList";
+
+@import "./components/Container";
+
+@import "./components/Conversation";
+
+html, body {
+	height: 100%;
+	margin: 0;
+	font: 16px Arial;
+}
+
+body {
+	width: 100%;
+}
+
+#app {
+	height: 100%;
+}

@@ -1,12 +1,23 @@
-### Description
+## Description
 
-This is a messenger prototype built with **ReactJS** in **ES6**. In order to demostrate its practicality, I integrated the chatbot logic I previously created ([repo](https://github.com/embrilliant/talking-bot)).
+This is a messenger prototype built with **React** in **ES6**. In order to demostrate its practicality, I integrated the chatbot logic I previously created ([repo](https://github.com/embrilliant/talking-bot)).
 
-### Development Setup
+## Technology
+
+* React
+* Build tool: Webpack
+
+## Development Setup
 
 ```
 npm install
 ```
 
-### Demo
+### Build Project
+
+```
+npm run build
+```
+
+### Live Demo
 [Live Demo](http://www.digitaleverything.net/demos/whatsapp/)

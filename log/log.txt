@@ -1,6 +1,0 @@
-user: hhhhh
-bot: hhhhh
-user: 123
-bot: Oh?
-user: 1222222
-bot: Ok, I don't know what to say.
